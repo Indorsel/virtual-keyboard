@@ -1,63 +1,78 @@
-import { Keyboard } from "./Keyboard"
+import { getLanguageKeys } from '../utils/changeLanguages'
+import { get, set } from '../utils/storage'
+import { Keyboard } from './Keyboard'
 
 export class EventListeners {
-  constructor() {
-    // this.events = []
-  }
-
-  // listen(e) {
-  //   this.events.push(e)
-  // }
-
-  // listenOff(e) {
-  //   this.events.filter(el => el.type != e.type)
-  //   return this.events
-  // }
+  constructor() {}
   
   listeners(){
-    window.addEventListener('languagechange', function(lang) {
-      const keyboard = new Keyboard(lang)
-    })
-
-    window.addEventListener('onkeypress', function() {
-
-    })
-
-    window.addEventListener('click', function() {
-
-    })
-
-    window.addEventListener('keydown', function(event) {
-      document.getElementById(event).classList.add('active')
-    })
-
-    window.addEventListener('keyup', function() {
-      document.getElementById().classList.remove('active')
-    })
-
     document.addEventListener('keydown', function(event) {
-      if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
-        alert('Отменить!')
-      }
-    });
+      document.querySelector(`#${event.code}`).classList.add('active')
+      let textarea = document.getElementById('keyboard_input')
+      textarea.innerHTML += event.key
+    })
 
-    document.addEventListener('keydown', function(event) {
-      if (event.code == 'KeyC' && (event.ctrlKey || event.metaKey)) {
-        alert('Скопировать!')
-      }
-    });
+    document.addEventListener('keyup', function(event) {
+      document.querySelector(`#${event.code}`).classList.remove('active')
+    })
 
-    document.addEventListener('keydown', function(event) {
-      if (event.code == 'KeyV' && (event.ctrlKey || event.metaKey)) {
-        alert('Вставить!')
-      }
-    });
+    window.addEventListener('click', function(event) {
+      document.getElementById('keyboard_input').focus();
+    })
 
+
+    //добавление класса active кнопкам
+    document.querySelector('#keyboard_wrapper').addEventListener('mousedown', function(event) {
+      document.querySelector(`#${event.target.id}`).classList.add('active')
+      // let textarea = document.getElementById('keyboard_input')
+      // textarea.innerHTML += e.key
+    })
+
+    document.querySelector('#keyboard_wrapper').addEventListener('mouseup', function(event) {
+      document.querySelector(`#${event.target.id}`).classList.remove('active')
+    })
+
+
+    //переключение языка
     document.addEventListener('keydown', function(event) {
-      if (event.code == 'KeyA' && (event.ctrlKey || event.metaKey)) {
-        alert('Выделить всё!')
+      if ((event.shiftKey || event.ctrlKey) && event.altKey) {
+        if (get('lang') === 'en') {
+          set('lang', 'ru')
+        } else {
+          set('lang', 'en')
+        }
+        let keyboard = new Keyboard(getLanguageKeys())
+        keyboard.render()
       }
-    });
+    })
+
+    // window.addEventListener('keyup', function() {
+    //   document.getElementById().classList.remove('active')
+    // })
+
+    // document.addEventListener('keydown', function(event) {
+    //   if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
+    //     alert('Отменить!')
+    //   }
+    // });
+
+    // document.addEventListener('keydown', function(event) {
+    //   if (event.code == 'KeyC' && (event.ctrlKey || event.metaKey)) {
+    //     alert('Скопировать!')
+    //   }
+    // });
+
+    // document.addEventListener('keydown', function(event) {
+    //   if (event.code == 'KeyV' && (event.ctrlKey || event.metaKey)) {
+    //     alert('Вставить!')
+    //   }
+    // });
+
+    // document.addEventListener('keydown', function(event) {
+    //   if (event.code == 'KeyA' && (event.ctrlKey || event.metaKey)) {
+    //     alert('Выделить всё!')
+    //   }
+    // });
   }
 
   isListenersOn() {

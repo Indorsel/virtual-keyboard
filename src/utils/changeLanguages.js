@@ -1,26 +1,14 @@
 import { keyCodesEng } from "../const/keyCodesEng";
 import { keyCodesRu } from "../const/keyCodesRu";
-import { Keyboard } from "../modules/Keyboard";
-import './storage'
+import { get } from "./storage";
 
 
-window.onlanguagechange = function(event) {
-  
-
-};
-
-export const lang = () => {
-  if(lang === 'en') {
+export const getLanguageKeys = () => {
+  if (get('lang') === 'en') {
+    console.log('1')
     return keyCodesEng
   } else {
-    return keyCodesRu
-  }
-}
-
-export const change = (lang) => {
-  if(lang === 'en') {
-    return keyCodesEng
-  } else {
+    console.log('2')
     return keyCodesRu
   }
 }

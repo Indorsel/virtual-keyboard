@@ -1,5 +1,3 @@
-import { keyCodesEng } from "../const/keyCodesEng"
-
 export class Textarea {
   constructor(){
     this.element = document.createElement('textarea')
@@ -12,5 +10,6 @@ export class Textarea {
   }
 
   render() {
-    this.createTextarea()  }
+    this.createTextarea()  
+  }
 }

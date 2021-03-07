@@ -185,7 +185,7 @@ export const keyCodesEng = [
     group: 2
   },
   {
-    value: 'CapsLock',
+    value: 'Caps Lock',
     code: 'CapsLock',
     className: 'capsKey',
     keyCode: '20',
@@ -357,7 +357,7 @@ export const keyCodesEng = [
     group: 4
   },
   {
-    value: 'Control',     //Ctrl left
+    value: 'Ctrl',     //Ctrl left
     code: 'ControlLeft',
     keyCode: '17',
     group: 5
@@ -388,12 +388,6 @@ export const keyCodesEng = [
     group: 5
   },
   {
-    value: 'Control',     //Ctrl left/right
-    code: 'ControlRight',
-    keyCode: '17',
-    group: 5
-  },
-  {
     value: '⬅',
     code: 'ArrowLeft',
     keyCode: '37',
@@ -409,6 +403,12 @@ export const keyCodesEng = [
     value: '➡',
     code: 'ArrowRight',
     keyCode: '39',
+    group: 5
+  }, 
+  {
+    value: 'Ctrl',     //Ctrl left/right
+    code: 'ControlRight',
+    keyCode: '17',
     group: 5
   }
 ]

@@ -6,6 +6,6 @@ export function get(name, outValue = null) {
   return  JSON.parse(window.localStorage.getItem(name) || outValue) //parse обратно из json строки в объект
 }
 
-export function clearStorage  (name) {
+export function clearStorage(name) {
     localStorage.removeItem(name)
 }

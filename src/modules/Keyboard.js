@@ -7,12 +7,19 @@ export class Keyboard {
     this.options = {
       isShift: false,
       isCapsLock: false,
-    }
+    };
+    this.lang = localStorage.getItem('lang') === 'ru' ? 'ru' : 'en';
   }
   
   isShiftDown() {
     if(document.getElementById().clicked == true) {
 
+    }
+  }
+
+  checkKeyboard() {
+    if (document.getElementById('keyboard_wrapper')) {
+      document.getElementById('keyboard_wrapper').remove()
     }
   }
 
@@ -41,12 +48,13 @@ export class Keyboard {
 
   addKeyboardWrapper(){
     const keyboardWrapper = document.createElement('div');
-    keyboardWrapper.classList.add('keyboard_wrapper')
+    keyboardWrapper.id = 'keyboard_wrapper'
     document.body.append(keyboardWrapper);
     return keyboardWrapper;
   }
 
   render() {
+    this.checkKeyboard()
     this.generationOfKeyboard(this.keyList)
   }
 }
