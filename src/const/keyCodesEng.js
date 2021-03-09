@@ -92,6 +92,7 @@ export const keyCodesEng = [
   },
   {
     value: '⬅ Backspace',
+    isShift  : '⬅ Backspace',
     code: 'Backspace',
     className: 'specialKey',
     keyCode: '8',
@@ -99,6 +100,7 @@ export const keyCodesEng = [
   },
   {
     value: 'Tab',
+    isShift  : 'Tab',
     code: 'Tab',
     className: 'specialKey',
     keyCode: '9',
@@ -106,60 +108,70 @@ export const keyCodesEng = [
   },
   {
     value: 'q',
+    isShift  : 'Q',
     code: 'KeyQ',
     keyCode: '81',
     group: 2
   },
   {
     value: 'w',
+    isShift  : 'W',
     code: 'KeyW',
     keyCode: '87',
     group: 2
   },
   {
     value: 'e',
+    isShift  : 'E',
     code: 'KeyE',
     keyCode: '69',
     group: 2
   },
   {
     value: 'r',
+    isShift  : 'R',
     code: 'KeyR',
     keyCode: '82',
     group: 2
   },
   {
     value: 't',
+    isShift  : 'T',
     code: 'KeyT',
     keyCode: '84',
     group: 2
   },
   {
     value: 'y',
+    isShift  : 'Y',
     code: 'KeyY',
     keyCode: '89',
     group: 2
   },
   {
     value: 'u',
+    isShift  : 'U',
     code: 'KeyU',
     keyCode: '85',
     group: 2
   },
   {
     value: 'i',
+    isShift  : 'I',
     code: 'KeyI',
     keyCode: '73',
     group: 2
   },
   {
     value: 'o',
+    isShift  : 'O',
     code: 'KeyO',
     keyCode: '79',
     group: 2
   },
   {
     value: 'p',
+    isShift  : 'P',
     code: 'KeyP',
     keyCode: '80',
     group: 2
@@ -180,12 +192,14 @@ export const keyCodesEng = [
   },
   {
     value: 'Delete',
+    isShift  : 'Delete',
     code: 'Delete',
     keyCode: '46',
     group: 2
   },
   {
     value: 'Caps Lock',
+    isShift  : 'Caps Lock',
     code: 'CapsLock',
     className: 'capsKey',
     keyCode: '20',
@@ -193,54 +207,63 @@ export const keyCodesEng = [
   },
   {
     value: 'a',
+    isShift  : 'A',
     code: 'KeyA',
     keyCode: '65',
     group: 3
   },
   {
     value: 's',
+    isShift  : 'S',
     code: 'KeyS',
     keyCode: '83',
     group: 3
   },
   {
     value: 'd',
+    isShift  : 'D',
     code: 'KeyD',
     keyCode: '68',
     group: 3
   },
   {
     value: 'f',
+    isShift  : 'F',
     code: 'KeyF',
     keyCode: '70',
     group: 3
   },
   {
     value: 'g',
+    isShift  : 'G',
     code: 'KeyG',
     keyCode: '71',
     group: 3
   },
   {
     value: 'h',
+    isShift  : 'H',
     code: 'KeyH',
     keyCode: '72',
     group: 3
   },
   {
     value: 'j',
+    isShift  : 'J',
     code: 'KeyJ',
     keyCode: '74',
     group: 3
   },
   {
     value: 'k',
+    isShift  : 'K',
     code: 'KeyK',
     keyCode: '75',
     group: 3
   },
   {
     value: 'l',
+    isShift  : 'L',
     code: 'KeyL',
     keyCode: '76',
     group: 3
@@ -260,7 +283,7 @@ export const keyCodesEng = [
     group: 3
   },
   {
-    value: '\\',         // ????? backslash
+    value: '\\',         
     isShift  : '|',
     code: 'Backslash',
     keyCode: '220',
@@ -268,6 +291,7 @@ export const keyCodesEng = [
   },
   {
     value: 'Enter',
+    isShift  : 'Enter',
     code: 'Enter',
     className: 'enter',
     keyCode: '13',
@@ -275,6 +299,7 @@ export const keyCodesEng = [
   },
   {
     value: 'Shift',       //Shift  left/right
+    isShift  : 'Shift',
     code: 'ShiftLeft',
     className: 'specialKey',
     keyCode: '16',
@@ -282,42 +307,49 @@ export const keyCodesEng = [
   },
   {
     value: 'z',
+    isShift  : 'Z',
     code: 'KeyZ',
     keyCode: '90',
     group: 4
   },
   {
     value: 'x',
+    isShift  : 'X',
     code: 'KeyX',
     keyCode: '88',
     group: 4
   },
   {
     value: 'c',
+    isShift  : 'C',
     code: 'KeyC',
     keyCode: '67',
     group: 4
   },
   {
     value: 'v',
+    isShift  : 'V',
     code: 'KeyV',
     keyCode: '86',
     group: 4
   },
   {
     value: 'b',
+    isShift  : 'B',
     code: 'KeyB',
     keyCode: '66',
     group: 4
   },
   {
     value: 'n',
+    isShift  : 'N',
     code: 'KeyN',
     keyCode: '78',
     group: 4
   },
   {
     value: 'm',
+    isShift  : 'M',
     code: 'KeyM',
     keyCode: '77',
     group: 4
@@ -345,12 +377,14 @@ export const keyCodesEng = [
   },
   {
     value: '⬆',
+    isShift  : '⬆',
     code: 'ArrowUp',
     keyCode: '38',
     group: 4
   },
   {
-    value: 'Shift ',       //Shift  right
+    value: 'Shift',       //Shift  right
+    isShift  : 'Shift',
     code: 'ShiftRight',
     className: 'specialKey',
     keyCode: '16',
@@ -358,24 +392,28 @@ export const keyCodesEng = [
   },
   {
     value: 'Ctrl',     //Ctrl left
+    isShift  : 'Ctrl',
     code: 'ControlLeft',
     keyCode: '17',
     group: 5
   },
   {
     value: 'Win',        //Win 
+    isShift  : 'Win',
     code: 'MetaLeft',
     keyCode: '91',
     group: 5
   },
   {
     value: 'Alt',         // Alt left
+    isShift  : 'Alt',
     code: 'AltLeft',
     keyCode: '18',
     group: 5
   },
   {
     value: ' ',            //Space
+    isShift  : ' ',
     code: 'Space',
     className: 'spaceKey',
     keyCode: '32',
@@ -383,30 +421,35 @@ export const keyCodesEng = [
   },
   {
     value: 'Alt',         // Alt left
+    isShift  : 'Alt',
     code: 'AltRight',
     keyCode: '18',
     group: 5
   },
   {
     value: '⬅',
+    isShift  : '⬅',
     code: 'ArrowLeft',
     keyCode: '37',
     group: 5
   },
   {
     value: '⬇',
+    isShift  : '⬇',
     code: 'ArrowDown',
     keyCode: '40',
     group: 5
   },
   {
     value: '➡',
+    isShift  : '➡',
     code: 'ArrowRight',
     keyCode: '39',
     group: 5
   }, 
   {
     value: 'Ctrl',     //Ctrl left/right
+    isShift  : 'Ctrl',
     code: 'ControlRight',
     keyCode: '17',
     group: 5

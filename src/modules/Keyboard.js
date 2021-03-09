@@ -1,6 +1,8 @@
 // import { keyCodeFormatter } from '../utils'
 // import { pressKey } from "./pressKey";
 
+import { get } from "../utils/storage";
+
 export class Keyboard {
   constructor(keyList, options) {
     this.keyList = keyList;
@@ -8,13 +10,6 @@ export class Keyboard {
       isShift: false,
       isCapsLock: false,
     };
-    this.lang = localStorage.getItem('lang') === 'ru' ? 'ru' : 'en';
-  }
-  
-  isShiftDown() {
-    if(document.getElementById().clicked == true) {
-
-    }
   }
 
   checkKeyboard() {
@@ -27,6 +22,7 @@ export class Keyboard {
     const wrapper = this.addKeyboardWrapper()
 
     let startRowGroup = 1
+
     arr.forEach(el => {
       if(el.group !== startRowGroup) {
         startRowGroup++ 
@@ -34,14 +30,16 @@ export class Keyboard {
       }
       
       const keyboardElement = document.createElement('div')
+      
       keyboardElement.innerText = el.value
       keyboardElement.id = el.code
-      // keyboardElement.setAttribute('onclick', `${() => pressKey}`)
       keyboardElement.classList.add('key')
+
       el.className != 'specialKey' ? el.className : keyboardElement.classList.add('special')
       el.className != 'capsKey' ? el.className : keyboardElement.classList.add('special_3row')
       el.className != 'enter' ? el.className : keyboardElement.classList.add('special_3row')
       el.className != 'spaceKey' ? el.className : keyboardElement.classList.add('space')
+
       wrapper.append(keyboardElement)
     });
   }

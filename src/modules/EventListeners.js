@@ -1,4 +1,4 @@
-import { getLanguageKeys } from '../utils/changeLanguages'
+import { getLanguageKeys, getCapsKeys, getShiftKeys } from '../utils/keyBindsUtils'
 import { get, set } from '../utils/storage'
 import { Keyboard } from './Keyboard'
 
@@ -6,32 +6,26 @@ export class EventListeners {
   constructor() {}
   
   listeners(){
+    //добавление класса active кнопкам
+
     document.addEventListener('keydown', function(event) {
+      // debugger
       document.querySelector(`#${event.code}`).classList.add('active')
-      let textarea = document.getElementById('keyboard_input')
-      textarea.innerHTML += event.key
     })
 
     document.addEventListener('keyup', function(event) {
       document.querySelector(`#${event.code}`).classList.remove('active')
     })
 
-    window.addEventListener('click', function(event) {
-      document.getElementById('keyboard_input').focus();
+    document.addEventListener('mousedown', function(event) {
+      if(event.target.id != 'keyboard_wrapper' && event.target.id != 'keyboard_input' && event.target.id != '') {
+        document.querySelector(`#${event.target.id}`).classList.add('active')
+      }
     })
 
-
-    //добавление класса active кнопкам
-    document.querySelector('#keyboard_wrapper').addEventListener('mousedown', function(event) {
-      document.querySelector(`#${event.target.id}`).classList.add('active')
-      // let textarea = document.getElementById('keyboard_input')
-      // textarea.innerHTML += e.key
-    })
-
-    document.querySelector('#keyboard_wrapper').addEventListener('mouseup', function(event) {
+    document.addEventListener('mouseup', function(event) {
       document.querySelector(`#${event.target.id}`).classList.remove('active')
     })
-
 
     //переключение языка
     document.addEventListener('keydown', function(event) {
@@ -46,33 +40,85 @@ export class EventListeners {
       }
     })
 
-    // window.addEventListener('keyup', function() {
-    //   document.getElementById().classList.remove('active')
-    // })
+    //CapsLock
+    document.addEventListener('keydown', function(event) {
+      if (event.code === 'CapsLock') {
+        if (get('isCapsLock') === 'false') {
+          set('isCapsLock', 'true')
+        } else {
+          set('isCapsLock', 'false')
+        }
 
-    // document.addEventListener('keydown', function(event) {
-    //   if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
-    //     alert('Отменить!')
-    //   }
-    // });
+        let keyboard = new Keyboard(getCapsKeys())
+        keyboard.render()
+      }
+    })
 
-    // document.addEventListener('keydown', function(event) {
-    //   if (event.code == 'KeyC' && (event.ctrlKey || event.metaKey)) {
-    //     alert('Скопировать!')
-    //   }
-    // });
+    //Shift подписка
+    document.addEventListener('keydown', function(event) {
+      if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+        // debugger
+        if (get('isShift') === 'false') {
+          set('isShift', 'true')
+        } else {
+          set('isShift', 'false')
+        }
+        
+        let keyboard = new Keyboard(getShiftKeys())
+        keyboard.render()
+      }
+    })
 
-    // document.addEventListener('keydown', function(event) {
-    //   if (event.code == 'KeyV' && (event.ctrlKey || event.metaKey)) {
-    //     alert('Вставить!')
-    //   }
-    // });
+    //Shift отписка
+    document.addEventListener('keyup', function(event) {
+      if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+        // debugger
+        if (get('isShift') === 'false') {
+          set('isShift', 'true')
+        } else {
+          set('isShift', 'false')
+        }
+        
+        let keyboard = new Keyboard(getShiftKeys())
+        keyboard.render()
+      }
+    })
 
-    // document.addEventListener('keydown', function(event) {
-    //   if (event.code == 'KeyA' && (event.ctrlKey || event.metaKey)) {
-    //     alert('Выделить всё!')
-    //   }
-    // });
+    //переключение на Win по клику мышкой
+    document.addEventListener('click', function(event) {
+      if (event.target.id === 'MetaLeft') {
+        if (get('lang') === 'en') {
+          set('lang', 'ru')
+        } else {
+          set('lang', 'en')
+        }
+        let keyboard = new Keyboard(getLanguageKeys())
+        keyboard.render()
+      }
+
+      //CapsLock
+      if (event.target.id === 'CapsLock') {
+        if (get('isCapsLock') === 'false') {
+          set('isCapsLock', 'true')
+        } else {
+          set('isCapsLock', 'false')
+        }
+        let keyboard = new Keyboard(getCapsKeys())
+        keyboard.render()
+      }
+
+      //Shift
+      if (event.target.id === 'ShiftLeft' || event.target.id === 'ShiftRight') {
+        if (get('isShift') === 'false') {
+          set('isShift', 'true')
+        } else {
+          set('isShift', 'false')
+        }
+        
+        let keyboard = new Keyboard(getShiftKeys())
+        keyboard.render()
+      }
+    })
   }
 
   isListenersOn() {
