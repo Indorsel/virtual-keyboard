@@ -48,24 +48,46 @@ export const getShiftKeys = () => {
     shiftArr = keyCodesRu
   }
   shiftArr.forEach(el => {
-    if (get('isShift') === 'true') {
-      if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-      el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-      el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
-        el.value = el.value.toUpperCase()
+    if (get('isCapsLock') === 'true') {
+      if (get('isShift') === 'true') {
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
+        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
+        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+          el.value = el.value.toLowerCase()
+        } else {
+          [el.value, el.isShift] = [el.isShift, el.value]
+        }
+        return el
       } else {
-        [el.value, el.isShift] = [el.isShift, el.value]
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
+        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
+        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+          el.value = el.value.toUpperCase()
+        } else {
+          [el.value, el.isShift] = [el.isShift, el.value]
+        }
+        return el
       }
-      return el
     } else {
-      if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-      el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-      el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
-        el.value = el.value.toLowerCase()
+      if (get('isShift') === 'true') {
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
+        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
+        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+          el.value = el.value.toUpperCase()
+        } else {
+          [el.value, el.isShift] = [el.isShift, el.value]
+        }
+        return el
       } else {
-        [el.value, el.isShift] = [el.isShift, el.value]
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
+        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
+        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+          el.value = el.value.toLowerCase()
+        } else {
+          [el.value, el.isShift] = [el.isShift, el.value]
+        }
+        return el
       }
-      return el
     }
   })
   return shiftArr

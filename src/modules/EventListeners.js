@@ -7,7 +7,6 @@ export class EventListeners {
   
   listeners(){
     //добавление класса active кнопкам
-
     document.addEventListener('keydown', function(event) {
       // debugger
       document.querySelector(`#${event.code}`).classList.add('active')
@@ -29,13 +28,14 @@ export class EventListeners {
 
     //переключение языка
     document.addEventListener('keydown', function(event) {
+      // debugger
       if ((event.shiftKey || event.ctrlKey) && event.altKey) {
         if (get('lang') === 'en') {
           set('lang', 'ru')
         } else {
           set('lang', 'en')
         }
-        let keyboard = new Keyboard(getLanguageKeys())
+        let keyboard = new Keyboard(getCapsKeys())
         keyboard.render()
       }
     })
@@ -54,19 +54,23 @@ export class EventListeners {
       }
     })
 
+    let shiftOn = false     // флаг для одного действия shift в keydown 
     //Shift подписка
     document.addEventListener('keydown', function(event) {
-      if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
-        // debugger
-        if (get('isShift') === 'false') {
-          set('isShift', 'true')
-        } else {
-          set('isShift', 'false')
+      if (shiftOn === false) {
+        if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+          // debugger
+          if (get('isShift') === 'false') {
+            set('isShift', 'true')
+          } else {
+            set('isShift', 'false')
+          }
+          
+          let keyboard = new Keyboard(getShiftKeys())
+          keyboard.render()
         }
-        
-        let keyboard = new Keyboard(getShiftKeys())
-        keyboard.render()
       }
+      shiftOn = true
     })
 
     //Shift отписка
@@ -82,6 +86,7 @@ export class EventListeners {
         let keyboard = new Keyboard(getShiftKeys())
         keyboard.render()
       }
+      shiftOn = false
     })
 
     //переключение на Win по клику мышкой
@@ -92,7 +97,7 @@ export class EventListeners {
         } else {
           set('lang', 'en')
         }
-        let keyboard = new Keyboard(getLanguageKeys())
+        let keyboard = new Keyboard(getShiftKeys())
         keyboard.render()
       }
 

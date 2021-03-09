@@ -16,12 +16,9 @@ export class Key {
       // debugger
       switch (e.keyCode) {
         case 20:       // Caps Lock
-        // debugger
-          // get('isCapsLock') === 'false' ? set('isCapsLock', 'true') : set('isCapsLock', 'false')
           break;
 
         case 16:      // Shift'ы
-          
           break;
 
         case 17:
@@ -35,13 +32,6 @@ export class Key {
           break;
 
         case 91:// Win
-            // if (get('lang') === 'en') {
-            //   set('lang', 'ru')
-            // } else {
-            //   set('lang', 'en')
-            // }
-            // let keyboard = new Keyboard(getLanguageKeys())
-            // keyboard.render()
           break;
 
         case 46:// Del
