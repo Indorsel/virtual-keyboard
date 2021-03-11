@@ -1,6 +1,5 @@
+import { keyCodesEng } from "../const/keyCodesEng";
 import { getLanguageKeys } from "../utils/keyBindsUtils";
-import { get, set } from '../utils/storage'
-import { Keyboard } from './Keyboard'
 
 
 export class Key {
@@ -8,60 +7,87 @@ export class Key {
 
   writingInTextarea() {
     window.addEventListener('keydown', function (e) {
-      // debugger
-      document.getElementById('keyboard_input').focus();
-      let keyValue = getLanguageKeys().find(el => el.code === e.code).value
-      let textarea = document.getElementById('keyboard_input')
-      e.preventDefault();
-      // debugger
-      switch (e.keyCode) {
-        case 20:       // Caps Lock
-          break;
+      let arr
+      keyCodesEng.forEach(el => {
+        if (el.keyCode == e.keyCode) {
+          arr = el
+        }})
+      if (arr != undefined)  {
+        document.getElementById('keyboard_input').focus();
+        let keyValue = getLanguageKeys().find(el => el.code === e.code).value
+        let textarea = document.getElementById('keyboard_input')
+        let textArr = Array.from(textarea.textContent)
+        let currentCursor = textarea.selectionEnd
+        e.preventDefault();
 
-        case 16:      // Shift'ы
-          break;
+        
+        setTimeout(() => {
+          textarea.focus()
+          textarea.selectionStart = currentCursor
+        }, 0)
 
-        case 17:
-          break;
+        switch (e.keyCode) {
+          case 20:       // Caps Lock
+            break;
+  
+          case 16:      // Shift'ы
+            break;
+  
+          case 17:      // Ctrl
+            break;
+  
+          case 18:      // Alt
+            break;
 
-        case 18:
-          break;
+          case 91:      // Win
+            break;
+  
+          case 46:      // Del
+            if (currentCursor < textArr.length) {
+              textArr.splice(currentCursor, 1)
+            }
+            break;
 
-        case e.ctrlKey && 65:      // Ctrl'ы + A
-          textarea.select()
-          break;
-
-        case 91:// Win
-          break;
-
-        case 46:// Del
-
-          break;
-
-        case 8:// Backspace
-        // debugger
-          textarea.innerHTML = textarea.value.substring(0, textarea.value.length - 1)
-        break;
-
-        case 13:// Enter
-         textarea.innerHTML += '\n'
-        break;
-
-        case 9:// Tab
-          textarea.innerHTML += '  '
-        break;
-
-        default:
-          textarea.innerHTML += keyValue
-          break;
+          case 8:       // Backspace
+            if (currentCursor > 0) {
+              currentCursor--
+              textArr.splice(currentCursor, 1)
+            }
+            break;
+  
+          case 13:      // Enter
+            textArr.splice(currentCursor, 0, '\n')
+            currentCursor++
+            break;
+  
+          case 9:       // Tab
+            textArr.splice(currentCursor, 0, '  ')
+            currentCursor += 2
+            break;
+  
+          default:
+            textArr.splice(currentCursor, 0, keyValue)
+            currentCursor++
+            break;
+        }
+      textarea.textContent = textArr.join('')
       }
     })
 
-    document.addEventListener('click', function(e) {
-      if(event.target.id != 'keyboard_wrapper' && event.target.id != 'keyboard_input' && event.target.id != '') {
+    document.addEventListener('mousedown', function(e) {
+      if(e.target.id != 'keyboard_wrapper' && e.target.id != 'keyboard_input' && e.target.id != '') {
+        document.getElementById('keyboard_input').focus();
         let keyValue = getLanguageKeys().find(el => el.code === e.target.id).value
         let textarea = document.getElementById('keyboard_input')
+        let textArr = Array.from(textarea.textContent)
+        let currentCursor = textarea.selectionEnd
         e.preventDefault();
+
+        setTimeout(() => {
+          textarea.focus()
+          textarea.selectionStart = currentCursor
+        }, 0)
+
         switch (e.target.id) {
           case 'CapsLock':
             break;
@@ -73,15 +99,9 @@ export class Key {
             break;
   
           case 'ControlLeft':
-            if (e.target.code == 'KeyA' && e.target.code == 'Ctrl') {
-              textarea.select()
-            }
             break;
 
           case 'ControlRight':
-            if (e.target.code == 'KeyA' && e.target.code == 'Ctrl') {
-              textarea.select()
-            }
             break;
   
           case 'MetaLeft':
@@ -94,25 +114,34 @@ export class Key {
             break;
   
           case 'Delete':
-            textarea.
+            if (currentCursor < textArr.length) {
+              textArr.splice(currentCursor, 1)
+            }
             break;
   
           case 'Backspace':
-            textarea.innerHTML = textarea.value.substring(0, textarea.value.length - 1)
+            if (currentCursor > 0) {
+              currentCursor--
+              textArr.splice(currentCursor, 1)
+            }
           break;
   
           case 'Enter':
-            textarea.innerHTML += '\n'
+            textArr.splice(currentCursor, 0, '\n')
+            currentCursor++
           break;
   
           case 'Tab':
-            textarea.innerHTML += '  '
+            textArr.splice(currentCursor, 0, '  ')
+            currentCursor += 2
           break;
   
           default:
-            textarea.innerHTML += keyValue
+            textArr.splice(currentCursor, 0, keyValue)
+            currentCursor++
             break;
         }
+        textarea.textContent = textArr.join('')
       }
     })
   }

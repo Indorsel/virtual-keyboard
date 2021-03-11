@@ -276,7 +276,7 @@ export const keyCodesEng = [
     group: 3
   },
   {
-    value: "'",          //single quote
+    value: "'",
     isShift  : '"',
     code: 'Quote',
     keyCode: '222',
@@ -298,10 +298,10 @@ export const keyCodesEng = [
     group: 3
   },
   {
-    value: 'Shift',       //Shift  left/right
+    value: 'Shift',
     isShift  : 'Shift',
     code: 'ShiftLeft',
-    className: 'specialKey',
+    className: 'shift',
     keyCode: '16',
     group: 4
   },
@@ -376,43 +376,36 @@ export const keyCodesEng = [
     group: 4
   },
   {
-    value: '⬆',
-    isShift  : '⬆',
-    code: 'ArrowUp',
-    keyCode: '38',
-    group: 4
-  },
-  {
-    value: 'Shift',       //Shift  right
+    value: 'Shift',
     isShift  : 'Shift',
     code: 'ShiftRight',
-    className: 'specialKey',
+    className: 'shift',
     keyCode: '16',
     group: 4
   },
   {
-    value: 'Ctrl',     //Ctrl left
+    value: 'Ctrl',
     isShift  : 'Ctrl',
     code: 'ControlLeft',
     keyCode: '17',
     group: 5
   },
   {
-    value: 'Win',        //Win 
+    value: 'Win',
     isShift  : 'Win',
     code: 'MetaLeft',
     keyCode: '91',
     group: 5
   },
   {
-    value: 'Alt',         // Alt left
+    value: 'Alt',
     isShift  : 'Alt',
     code: 'AltLeft',
     keyCode: '18',
     group: 5
   },
   {
-    value: ' ',            //Space
+    value: ' ',
     isShift  : ' ',
     code: 'Space',
     className: 'spaceKey',
@@ -420,35 +413,14 @@ export const keyCodesEng = [
     group: 5
   },
   {
-    value: 'Alt',         // Alt left
+    value: 'Alt',
     isShift  : 'Alt',
     code: 'AltRight',
     keyCode: '18',
     group: 5
   },
   {
-    value: '⬅',
-    isShift  : '⬅',
-    code: 'ArrowLeft',
-    keyCode: '37',
-    group: 5
-  },
-  {
-    value: '⬇',
-    isShift  : '⬇',
-    code: 'ArrowDown',
-    keyCode: '40',
-    group: 5
-  },
-  {
-    value: '➡',
-    isShift  : '➡',
-    code: 'ArrowRight',
-    keyCode: '39',
-    group: 5
-  }, 
-  {
-    value: 'Ctrl',     //Ctrl left/right
+    value: 'Ctrl',
     isShift  : 'Ctrl',
     code: 'ControlRight',
     keyCode: '17',

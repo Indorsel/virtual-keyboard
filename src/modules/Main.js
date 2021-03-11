@@ -1,22 +1,25 @@
 import { Keyboard } from './Keyboard';
-import { Textarea } from './CreateTextarea';
-// import { change } from './utils/changeLanguages'
+import { Textarea } from './Textarea';
 import { Key } from './Key'
 import { EventListeners } from './EventListeners'
 import { set } from '../utils/storage';
 import { getLanguageKeys } from '../utils/keyBindsUtils';
 
+
 export class Main {
+  defaultSettings() {
+    set('lang', 'en')                                           //установка начального языка в локал сторадже
+    set('isCapsLock', 'false')
+    set('isShift', 'false')
+  }
 
   render() {
     const textarea = new Textarea()
     textarea.render()                                           //отрисовка textarea
   
-    set('lang', 'en')                                           //установка начального языка в локал сторадже
-    set('isCapsLock', 'false')
-    set('isShift', 'false')
+    this.defaultSettings()
     const keyboard = new Keyboard(getLanguageKeys())
-    keyboard.render()                                           //рендер клавы
+    keyboard.render()                                           //рендер клавиатуры
   
     const eventListeners = new EventListeners()
     eventListeners.isListenersOn()                              //отлов событий

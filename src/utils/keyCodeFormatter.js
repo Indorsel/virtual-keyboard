@@ -1,1 +1,0 @@
-export const keyCodeFormatter = (code) => `${String.fromCharCode(code)}`;

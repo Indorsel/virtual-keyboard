@@ -92,27 +92,3 @@ export const getShiftKeys = () => {
   })
   return shiftArr
 }
-
-
-// const setContent = (...parts) => {
-//   let textarea = document.getElementById('keyboard_input')
-//   textarea.value = parts.join('');
-// }
-
-// export const isDelete = () => {
-//   let textarea = document.getElementById('keyboard_input')
-//   const currentContent = textarea.value
-//   const startPosition = textarea.selectionStart
-//   const endPosition = textarea.selectionEnd
-//   if (startPosition < endPosition) {
-//     setContent(
-//       currentContent.substr(0, startPosition),
-//       currentContent.substr(endPosition, currentContent.length),
-//     ) 
-//   } else {
-//     setContent(
-//       currentContent.substr(0, startPosition),
-//       currentContent.substr(endPosition + 1, currentContent.length),
-//     )
-//   }
-// }

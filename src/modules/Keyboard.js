@@ -1,15 +1,6 @@
-// import { keyCodeFormatter } from '../utils'
-// import { pressKey } from "./pressKey";
-
-import { get } from "../utils/storage";
-
 export class Keyboard {
-  constructor(keyList, options) {
+  constructor(keyList) {
     this.keyList = keyList;
-    this.options = {
-      isShift: false,
-      isCapsLock: false,
-    };
   }
 
   checkKeyboard() {
@@ -39,6 +30,7 @@ export class Keyboard {
       el.className != 'capsKey' ? el.className : keyboardElement.classList.add('special_3row')
       el.className != 'enter' ? el.className : keyboardElement.classList.add('special_3row')
       el.className != 'spaceKey' ? el.className : keyboardElement.classList.add('space')
+      el.className != 'shift' ? el.className : keyboardElement.classList.add('shift')
 
       wrapper.append(keyboardElement)
     });
