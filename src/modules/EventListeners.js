@@ -1,12 +1,38 @@
 import { keyCodesEng } from '../const/keyCodesEng'
-import { getCapsKeys, getShiftKeys } from '../utils/keyBindsUtils'
+import { getLanguageKeys, getCapsKeys, getShiftKeys } from '../utils/keyBindsUtils'
 import { get, set } from '../utils/storage'
 import { Keyboard } from './Keyboard'
+import { Key } from './Key'
 
 export class EventListeners {
   constructor() {}
   
   listeners(){
+    //вывод текста в textrea 
+    window.addEventListener('keydown', function (e) {
+      let arr
+      keyCodesEng.forEach(el => {
+        if (el.keyCode == e.keyCode) {
+          arr = el
+        }})
+      if (arr != undefined)  {
+        document.getElementById('keyboard_input').focus();
+        let key = getLanguageKeys().find(el => el.code === e.code)
+        e.preventDefault();
+        new Key(key).pressKey()
+      }
+    })
+
+    document.addEventListener('mousedown', function(e) {
+      if(e.target.id != 'keyboard_wrapper' && e.target.id != 'keyboard_input' && e.target.id != '') {
+        document.getElementById('keyboard_input').focus();
+        let key = getLanguageKeys().find(el => el.code === e.target.id)
+        e.preventDefault();
+        new Key(key).pressKey()
+      }
+    })
+
+
     //добавление класса active кнопкам
     let arr = []
     document.addEventListener('keydown', function(event) {

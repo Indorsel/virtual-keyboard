@@ -1,6 +1,7 @@
 import { keyCodesEng } from "../const/keyCodesEng";
 import { keyCodesRu } from "../const/keyCodesRu";
 import { get } from "./storage";
+import { notALetterArr } from "../const/notALetterArr";
 
 
 export const getLanguageKeys = () => {
@@ -21,16 +22,12 @@ export const getCapsKeys = () => {
   }
   capsArr.forEach(el => {
     if (get('isCapsLock') === 'true') {
-      if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-      el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-      el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+      if (el.code.includes('Key') === true || (get('lang') === 'ru' && notALetterArr.includes(el.code))) {
         el.value = el.value.toUpperCase()
       } 
       return el
     } else {
-      if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-      el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-      el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+      if (el.code.includes('Key') === true || (get('lang') === 'ru' && notALetterArr.includes(el.code))) {
         el.value = el.value.toLowerCase()
       }
       return el
@@ -50,18 +47,14 @@ export const getShiftKeys = () => {
   shiftArr.forEach(el => {
     if (get('isCapsLock') === 'true') {
       if (get('isShift') === 'true') {
-        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && notALetterArr.includes(el.code))) {
           el.value = el.value.toLowerCase()
         } else {
           [el.value, el.isShift] = [el.isShift, el.value]
         }
         return el
       } else {
-        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && notALetterArr.includes(el.code))) {
           el.value = el.value.toUpperCase()
         } else {
           [el.value, el.isShift] = [el.isShift, el.value]
@@ -70,18 +63,14 @@ export const getShiftKeys = () => {
       }
     } else {
       if (get('isShift') === 'true') {
-        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && notALetterArr.includes(el.code))) {
           el.value = el.value.toUpperCase()
         } else {
           [el.value, el.isShift] = [el.isShift, el.value]
         }
         return el
       } else {
-        if (el.code.includes('Key') === true || (get('lang') === 'ru' && (el.code === 'BracketLeft' || 
-        el.code === 'BracketRight' || el.code === 'Semicolon' || el.code === 'Quote' || 
-        el.code === 'Comma' || el.code === 'Period' || el.code === 'Backquote'))) {
+        if (el.code.includes('Key') === true || (get('lang') === 'ru' && notALetterArr.includes(el.code))) {
           el.value = el.value.toLowerCase()
         } else {
           [el.value, el.isShift] = [el.isShift, el.value]

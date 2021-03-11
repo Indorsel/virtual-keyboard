@@ -276,7 +276,7 @@ export const keyCodesEng = [
     group: 3
   },
   {
-    value: "'",
+    value: "'",          //single quote
     isShift  : '"',
     code: 'Quote',
     keyCode: '222',
@@ -298,7 +298,7 @@ export const keyCodesEng = [
     group: 3
   },
   {
-    value: 'Shift',
+    value: 'Shift',       //Shift  left/right
     isShift  : 'Shift',
     code: 'ShiftLeft',
     className: 'shift',
