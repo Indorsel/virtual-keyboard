@@ -13,7 +13,7 @@ export class Key {
       textarea.selectionStart = currentCursor
     }, 0)
 
-    switch (char.code) {
+    switch (char?.code) {
       case 'CapsLock':
         break;
 
@@ -62,7 +62,7 @@ export class Key {
         break;
 
       default:
-        textArr.splice(currentCursor, 0, char.value)
+        textArr.splice(currentCursor, 0, char?.value)
         currentCursor++
         break;
     }
