@@ -4,11 +4,12 @@ import { Key } from './Key'
 import { EventListeners } from './EventListeners'
 import { set } from '../utils/storage';
 import { getLanguageKeys } from '../utils/keyBindsUtils';
+import { EN } from '../const/languages'
 
 
 export class Main {
   defaultSettings() {
-    set('lang', 'en')                                           //установка начального языка в локал сторадже
+    set('lang', EN)                                           //установка начального языка в локал сторадже
     set('isCapsLock', 'false')
     set('isShift', 'false')
   }

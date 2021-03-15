@@ -1,4 +1,5 @@
 import { keyCodesEng } from '../const/keyCodesEng'
+import { RU, EN } from '../const/languages'
 import { getLanguageKeys, getCapsKeys, getShiftKeys } from '../utils/keyBindsUtils'
 import { get, set } from '../utils/storage'
 import { Keyboard } from './Keyboard'
@@ -9,25 +10,25 @@ export class EventListeners {
   
   listeners(){
     //вывод текста в textrea 
-    window.addEventListener('keydown', function (e) {
+    window.addEventListener('keydown', function (event) {
       let arr
       keyCodesEng.forEach(el => {
-        if (el.keyCode == e.keyCode) {
+        if (el.keyCode == event.keyCode) {
           arr = el
         }})
       if (arr != undefined)  {
         document.getElementById('keyboard_input').focus();
-        let key = getLanguageKeys().find(el => el.code === e.code)
-        e.preventDefault();
+        let key = getLanguageKeys().find(el => el.code === event.code)
+        event.preventDefault();
         new Key(key).pressKey()
       }
     })
 
-    document.addEventListener('mousedown', function(e) {
-      if(e.target.id != 'keyboard_wrapper' && e.target.id != 'keyboard_input' && e.target.id != '') {
+    document.addEventListener('mousedown', function(event) {
+      if(event.target.id != 'keyboard_wrapper' && event.target.id != 'keyboard_input' && event.target.id != '') {
         document.getElementById('keyboard_input').focus();
-        let key = getLanguageKeys().find(el => el.code === e.target.id)
-        e.preventDefault();
+        let key = getLanguageKeys().find(el => el.code === event.target.id)
+        event.preventDefault();
         new Key(key).pressKey()
       }
     })
@@ -71,10 +72,10 @@ export class EventListeners {
     //переключение языка
     document.addEventListener('keydown', function(event) {
       if ((event.shiftKey || event.ctrlKey) && event.altKey) {
-        if (get('lang') === 'en') {
-          set('lang', 'ru')
+        if (get('lang') === EN) {
+          set('lang', RU)
         } else {
-          set('lang', 'en')
+          set('lang', EN)
         }
 
         let keyboard = new Keyboard(getCapsKeys())
@@ -134,10 +135,10 @@ export class EventListeners {
     //переключение языка на Win по клику мышкой
     document.addEventListener('click', function(event) {
       if (event.target.id === 'MetaLeft') {
-        if (get('lang') === 'en') {
-          set('lang', 'ru')
+        if (get('lang') === EN) {
+          set('lang', RU)
         } else {
-          set('lang', 'en')
+          set('lang', EN)
         }
 
         let keyboard = new Keyboard(getShiftKeys())
